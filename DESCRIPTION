@@ -1,0 +1,12 @@
+Package: RTop500
+Title: Top 500 Datasets
+Version: 0.1
+Depends: R (>= 2.14.0), tidyr, ggplot2
+Enhances: shiny, Rcpuid
+Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"), email =
+        "schmidt@math.utk.edu"))
+Description: Top 500 lists and visualizations.
+License: BSD 2-clause License + file LICENSE
+NeedsCompilation: No
+LazyData: Yes
+Maintainer: Drew Schmidt <wrathematics@gmail.com>
