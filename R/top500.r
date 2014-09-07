@@ -67,54 +67,29 @@ top500.summary <- function(type="theoretical")
 
 
 
-plot.top500 <- function(columns=c("Min", "Mean", "Max"), type="theoretical", my.val=NULL)
+top500.diff <- function()
 {
-  top <- top500.summary(type=type)
+  files <- .__TOP500_datafiles
+  len <- length(files)
+  ret <- data.frame(date=character(len), Min=numeric(len), Mean=numeric(len), Max=numeric(len), stringsAsFactors=FALSE)
   
-  top <- top[, c("date", columns)]
-  
-#  if (!is.null(my.val))
-#  {
-#    if (!is.numeric(my.val))
-#      stop("'my.val' must be whatever")
-#    
-#    top <- cbind(top, Me=top500.rank(flops=my.val, type=type))
-#  }
-  
-  df <- tidyr::gather(top, Type, value, -date)
-  df$Type <- factor(df$Type, levels=rev(levels(df$Type)))
-  
-  g <- ggplot(df, aes(date, value)) + 
-       geom_line(aes(colour=Type)) + 
-       geom_point(aes(colour=Type), size=1) +
-       theme(legend.direction="horizontal", legend.position=c(.5, .972)) + 
-       xlab("Date")
-  
-  type <- match.arg(tolower(type), c("theoretical", "linpack", "ncores"))
-  if (type == "theoretical")
-    lab <- "Theoretical Peak GFLOPs"
-  else if (type == "linpack")
-    lab <- "GFLOPs Performance on the Linpack Benchmark"
-  else if (type == "ncores")
-    lab <- "Number of Cores"
-  
-  if (!is.null(my.val))
+  for (i in 1L:length(files))
   {
-    labeldata <- data.frame(date=df[nrow(df), 1L], value=my.val)
-    g <- g + geom_hline(yintercept=my.val, linetype="dashed") + 
-             geom_text(aes(vjust=-.5, hjust=.8), label="My Computer", data=labeldata)
+    file <- files[i]
+    top.theoretical <- eval(parse(text=file))[, "r.peak"]
+    top.linpack <- eval(parse(text=file))[, "r.max"]
+    
+    top <- top.theoretical - top.linpack
+    top <- sapply(top, function(x) max(0.000001, x))
+    
+    ret[i, 1L] <- name.getter(file)
+    ret[i, 2L] <- min(top)
+    ret[i, 3L] <- mean(top)
+    ret[i, 4L] <- max(top)
   }
   
-  gflops <- 10^(1:10-1)
-  g <- g + scale_y_continuous(breaks=gflops)
+  ret$date <- as.Date(paste0(ret$date, "01"), format="%Y%m%d")
   
-  g <- g + coord_trans(ytrans="log10")
-#  lab <- paste("Log10", lab)
-  
-  g <- g + ylab(lab)
-  
-  g <- g + ggtitle("Performance of the Top 500 Supercomputers")
-  
-  return( g )
+  return( ret )
 }
 
