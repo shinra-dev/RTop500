@@ -1,8 +1,8 @@
 Package: RTop500
 Title: Top 500 Datasets
-Version: 0.1
+Version: 14.06-0
 Depends: R (>= 2.14.0), tidyr, ggplot2, scales
-Enhances: shiny, Rcpuid
+Enhances: shiny, okcpuid
 Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"), email =
         "schmidt@math.utk.edu"))
 Description: Top 500 lists and visualizations.
