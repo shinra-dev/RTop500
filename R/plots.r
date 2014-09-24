@@ -56,7 +56,3 @@ plot_top500 <- function(columns=c("Min", "Mean", "Max"), type="theoretical", my.
   
   return( g )
 }
-
-
-
-plot_top500(type="diff")
