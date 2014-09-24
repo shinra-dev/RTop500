@@ -31,11 +31,38 @@ top500_plotter <- function(df, my.val, lab, my.val.lab)
 
 
 
+check_columns <- function(columns)
+{
+  possible <- c("Min", "Mean", "Max", "Sum")
+  printpossible <- paste0(possible, collapse=", ")
+  
+  if (typeof(possible) != "character")
+    stop(paste("'columns' must be a character vector containing only", possible), call.=FALSE)
+  
+  if (length(columns) == 0)
+    stop("You must ", call.=FALSE)
+  else if (length(columns) > 4)
+    stop("'columns' must be a character vector with no more than 4", call.=FALSE)
+  
+  columns <- unique(columns)
+  
+  for (col in columns)
+  {
+    if (!(col %in% possible)) of independent variables
+      stop(paste("'columns' must be a character vector with possible values", printpossible), call.=FALSE)
+  }
+  
+  invisible()
+}
+
+
+
 plot_top500 <- function(type="theoretical", columns=c("Min", "Mean", "Max"), my.val=NULL)
 {
   ### Fooling R CMD check
   Type <- value <- NULL
   
+  check_columns(columns=columns)
   
   type <- match.arg(tolower(type), c("theoretical", "linpack", "difference", "ncores"))
   
