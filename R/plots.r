@@ -1,5 +1,9 @@
 top500_plotter <- function(df, my.val, lab, my.val.lab)
 {
+  ### Fooling R CMD check
+  value <- Type <- .x <- NULL
+  
+  
   g <- ggplot(df, aes(date, value)) + 
          geom_line(aes(colour=Type)) + 
          geom_point(aes(colour=Type), size=1) +
@@ -27,8 +31,12 @@ top500_plotter <- function(df, my.val, lab, my.val.lab)
 
 
 
-plot_top500 <- function(columns=c("Min", "Mean", "Max"), type="theoretical", my.val=NULL)
+plot_top500 <- function(type="theoretical", columns=c("Min", "Mean", "Max"), my.val=NULL)
 {
+  ### Fooling R CMD check
+  Type <- value <- NULL
+  
+  
   type <- match.arg(tolower(type), c("theoretical", "linpack", "difference", "ncores"))
   
   if (type == "difference")

@@ -1,5 +1,6 @@
 library(XML)
 
+
 read.xml <- function(x)
 {
   XML::xmlToDataFrame(x, stringsAsFactors=FALSE)
@@ -37,6 +38,14 @@ process <- function(file)
   invisible()
 }
 
+write_R <- function(stuff, file)
+{
+  stuff <- paste0(".__TOP500_datafiles <- c(\n", paste0("  \"", stuff,  collapse="\",\n"), "\"\n)")
+  writeLines(text=stuff, file)
+  
+  invisible()
+}
+
 
 
 files <- dir(pattern="*.xml")
@@ -47,8 +56,9 @@ files <- dir(path="../data/", pattern="*.rda")
 files <- files[!grepl(files, pattern="datafiles")]
 files <- gsub(files, pattern="[.]rda", replacement="")
 files <- paste("TOP500_", files, sep="")
-assign(".__TOP500_datafiles", files)
-save(list=".__TOP500_datafiles", file="../data/TOP500_datafiles.rda")
 
+#assign(".__TOP500_datafiles", files)
+#save(list=".__TOP500_datafiles", file="../data/TOP500_datafiles.rda")
+write_R(stuff=files, file="../R/top500_list.r")
 
 
