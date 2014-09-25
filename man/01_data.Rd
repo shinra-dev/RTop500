@@ -65,7 +65,7 @@
   the GitHub repository of the RTop500 project (along with the
   parser used by the package).
 }
-\reference{
+\references{
   Official Top500 website: \url{http://www.top500.org/}
   
   Raw Top500 data mirror: 

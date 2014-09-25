@@ -18,7 +18,7 @@
   License: \tab BSD 2-Clause \cr
 }
 }
-\reference{
+\references{
   Official Top500 website: \url{http://www.top500.org/}
   
   Raw Top500 data mirror: 
