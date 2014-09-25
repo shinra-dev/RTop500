@@ -48,7 +48,7 @@ check_columns <- function(columns)
   
   for (col in columns)
   {
-    if (!(col %in% possible)) of independent variables
+    if (!(col %in% possible))
       stop(paste("'columns' must be a character vector with possible values", printpossible), call.=FALSE)
   }
   
