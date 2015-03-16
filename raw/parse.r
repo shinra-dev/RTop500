@@ -27,13 +27,23 @@ process <- function(file)
   tmp$year <- as.integer(tmp$year)
   tmp$number.of.processors <- as.integer(tmp$number.of.processors)
   tmp$r.peak <- as.numeric(tmp$r.peak)
-  tmp$n.half <- as.integer(tmp$n.half)
+  
+  tmp <- fixencoding(tmp)
+  
+  
+  if ("nhalf" %in% names(tmp))
+  {
+    tmp$n.half <- as.integer(tmp$nhalf)
+    tmp$nhalf <- NULL
+  }
+  else
+    tmp$n.half <- as.integer(tmp$n.half)
   
   
   assign(rname, tmp)
   
   outname <- paste("../data/", name, ".rda", sep="")
-  save(list=rname, file=outname, compress=TRUE)
+  save(list=rname, file=outname, compress="xz")
   
   invisible()
 }
@@ -49,6 +59,8 @@ write_R <- function(stuff, file)
 
 
 files <- dir(pattern="*.xml")
+#files <- "TOP500_201111_all.xml"
+
 
 for (file in files) process(file)
 
