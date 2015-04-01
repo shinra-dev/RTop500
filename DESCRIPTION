@@ -7,6 +7,6 @@ Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"), email =
         "schmidt@math.utk.edu"))
 Description: Top 500 lists and visualizations.
 License: BSD 2-clause License + file LICENSE
-NeedsCompilation: No
-LazyData: Yes
+NeedsCompilation: no
+LazyData: yes
 Maintainer: Drew Schmidt <wrathematics@gmail.com>
