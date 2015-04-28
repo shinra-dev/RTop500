@@ -10,6 +10,7 @@
 #' }
 #' 
 #' @import ggplot2 scales
+#' @importFrom tidyr gather
 #' 
 #' @name RTop500-package
 #' @author Drew Schmidt \email{wrathematics AT gmail.com}
