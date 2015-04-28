@@ -1,2 +1,6 @@
 redocument
 ^\.travis\.yml$
+
+raw/
+
+runapp.sh
