@@ -1,4 +1,5 @@
 library(shiny)
+library(ggplot2)
 library(RTop500)
 
 
@@ -29,6 +30,7 @@ shinyServer(function(input, output){
     cols <- character(0)
     if (input$col_min) cols <- c(cols, "Min")
     if (input$col_mean) cols <- c(cols, "Mean")
+    if (input$col_med) cols <- c(cols, "Median")
     if (input$col_max) cols <- c(cols, "Max")
     if (input$col_sum) cols <- c(cols, "Sum")
     

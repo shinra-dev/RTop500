@@ -67,6 +67,7 @@ shinyUI(
       selectizeInput('type', 'Type of Plot', type_print, "theoretical"),
       checkboxInput("col_min", "Min", TRUE),
       checkboxInput("col_mean", "Mean", TRUE),
+      checkboxInput("col_med", "Median", FALSE),
       checkboxInput("col_max", "Max", TRUE),
       checkboxInput("col_sum", "Sum", FALSE)
     ),

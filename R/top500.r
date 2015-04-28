@@ -38,7 +38,7 @@ top500.summary <- function(type="theoretical")
 {
   files <- .__TOP500_datafiles
   len <- length(files)
-  ret <- data.frame(date=character(len), Min=numeric(len), Mean=numeric(len), Max=numeric(len), Sum=numeric(len), stringsAsFactors=FALSE)
+  ret <- data.frame(date=character(len), Min=numeric(len), Mean=numeric(len), Max=numeric(len), Sum=numeric(len), Median=numeric(len), stringsAsFactors=FALSE)
   
   type <- match.arg(tolower(type), c("theoretical", "linpack", "ncores"))
   if (type == "theoretical")
@@ -58,6 +58,7 @@ top500.summary <- function(type="theoretical")
     ret[i, 3L] <- mean(top)
     ret[i, 4L] <- max(top)
     ret[i, 5L] <- sum(top)
+    ret[i, 6L] <- median(top)
   }
   
   ret$date <- as.Date(paste0(ret$date, "01"), format="%Y%m%d")

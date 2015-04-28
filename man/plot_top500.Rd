@@ -12,7 +12,7 @@ plot_top500(type = "theoretical", columns = c("Min", "Mean", "Max"),
 "theoretical", "linpack", "difference", and "ncores".}
 
 \item{columns}{A vector of strings that determines which values will be
-shown on the graph.  Options include "Min", "Mean, "Max", and "Sum".}
+shown on the graph.  Options include "Min", "Mean, "Max", "Median", and "Sum".}
 
 \item{my.val}{An optional value (matching the type argument) to add to the
 plot.  Want to see how your macine's performance compares with all

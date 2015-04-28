@@ -33,7 +33,8 @@ top500_plotter <- function(df, my.val, lab, my.val.lab)
 
 check_columns <- function(columns)
 {
-  possible <- c("Min", "Mean", "Max", "Sum")
+  columns <- unique(columns)
+  possible <- c("Min", "Mean", "Max", "Median", "Sum")
   printpossible <- paste0(possible, collapse=", ")
   
   if (typeof(possible) != "character")
@@ -41,10 +42,8 @@ check_columns <- function(columns)
   
   if (length(columns) == 0)
     stop("You must ", call.=FALSE)
-  else if (length(columns) > 4)
-    stop("'columns' must be a character vector with no more than 4", call.=FALSE)
-  
-  columns <- unique(columns)
+  else if (length(columns) > length(possible))
+    stop(paste("'columns' must be a character vector with no more than", length(possible)), call.=FALSE)
   
   for (col in columns)
   {
@@ -73,7 +72,7 @@ check_columns <- function(columns)
 #' 
 #' @param columns 
 #' A vector of strings that determines which values will be
-#' shown on the graph.  Options include "Min", "Mean, "Max", and "Sum".
+#' shown on the graph.  Options include "Min", "Mean, "Max", "Median", and "Sum".
 #' @param type 
 #' A string indicating the type of quantity to plot.  Options are
 #' "theoretical", "linpack", "difference", and "ncores".

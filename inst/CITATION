@@ -1,0 +1,12 @@
+citHeader("To cite RTop500 in a publication use:")
+
+citEntry(
+  entry = "Misc",
+  title = "RTop500: Top 500 Datasets",
+  author = personList(as.person("Drew Schmidt")),
+  year = "2014",
+  note = "{R} package",
+  url = "https://github.com/wrathematics/RTop500",
+  textVersion = "Drew Schmidt (2014). RTop500: Top 500 Datasets, R package. URL https://github.com/wrathematics/RTop500."
+)
+
