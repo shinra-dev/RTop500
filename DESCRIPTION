@@ -1,15 +1,22 @@
 Package: RTop500
-Title: Top 500 Datasets
+Type: Package
+Title: Top 500 Data
 Version: 14.11-0
-Depends: R (>= 2.15.1)
-Imports: ggplot2 (>= 1.0.0), scales (>= 0.2.4), tidyr (>= 0.2.0)
-Enhances: shiny, okcpuid
-Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"), email =
-        "schmidt@math.utk.edu"))
 Description: Top 500 lists and visualizations.
+Depends:
+    R (>= 2.15.1)
+Imports:
+    ggplot2 (>= 2.1.0),
+    scales (>= 0.3.0),
+    tidyr (>= 0.3.1)
+Enhances: shiny,
+    okcpuid
 License: BSD 2-clause License + file LICENSE
 NeedsCompilation: no
 ByteCompile: yes
-LazyData: yes
-LazyLoad: yes
+Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"), email =
+    "schmidt@math.utk.edu"))
+URL: https://github.com/shinra-dev/Rtop500
+BugReports: https://github.com/shinra-dev/Rtop500/issues
 Maintainer: Drew Schmidt <wrathematics@gmail.com>
+RoxygenNote: 5.0.1
